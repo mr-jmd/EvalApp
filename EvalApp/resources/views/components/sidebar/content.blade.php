@@ -47,12 +47,11 @@
         Dummy Links
     </div>
 
-    @php
-        $links = array_fill(0, 20, '');
-    @endphp
-
-    @foreach ($links as $index => $link)
-        <x-sidebar.link title="Dummy link {{ $index + 1 }}" href="#" />
-    @endforeach
+    <x-sidebar.link title="Usuarios " href="{{ route('usuarios') }}" />
+    <x-sidebar.link title="Contratistas " href="#" />
+    <x-sidebar.link title="Clientes " href="#" />
+    <x-sidebar.link title="Contratos " href="#" />
+    <x-sidebar.link title="Proyectos " href="#" />
+    <x-sidebar.link title="Avaluos " href="#" />
 
 </x-perfect-scrollbar>
