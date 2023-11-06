@@ -18,15 +18,8 @@ class CustomerController extends Controller
     public function store(StoreCustomerRequest $request)
     {
         $validatedData = $request->validated();
-
-        $customer = new Customer;
-        $customer->id = $request->id;
-        $customer->name = $request->name;
-        $customer->phone = $request->phone;
-        $customer->email = $request->email;
-        $customer->save();
-
-        return back()->with('message', 'El cliente se agrego correctamente');
+        Customer::create($validatedData);
+        return back()->with('message', 'El cliente se agregó correctamente');
     }
 
     /**

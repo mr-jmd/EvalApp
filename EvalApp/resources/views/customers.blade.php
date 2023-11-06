@@ -4,12 +4,18 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     </head>
     <x-slot name="header">  </x-slot>
-        
+     
+    @if (session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+    @endif
+
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2>Administrar <b>Clientes</b></h2>
+                    <h2><b>Clientes</b></h2>
                 </div>
                 <div class="col-sm-6">
                     <a href="#addCustomerModal" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i>Agregar Cliente</a>

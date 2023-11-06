@@ -13,8 +13,9 @@ Route::get('/usuarios', function () {
     return view('usuarios');
 })->middleware(['auth', 'verified'])->name('usuarios');
 
-Route::get('/clientes', [App\Http\Controllers\CustomerController::class, 'index'])->name('customer');
-Route::post('/clientes/store', [App\Http\Controllers\CustomerController::class, 'store'])->name('addcustomer');
+//Clientes
+Route::get('/clientes', [App\Http\Controllers\CustomerController::class, 'index'])->middleware(['auth', 'verified'])->name('customer');
+Route::post('/clientes/store', [App\Http\Controllers\CustomerController::class, 'store'])->middleware(['auth', 'verified'])->name('addcustomer');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
