@@ -49,7 +49,7 @@
 
     <x-sidebar.link title="Usuarios " href="{{ route('usuarios') }}" />
     <x-sidebar.link title="Contratistas " href="#" />
-    <x-sidebar.link title="Clientes " href="#" />
+    <x-sidebar.link title="Clientes " href="{{ route('customer') }}" />
     <x-sidebar.link title="Contratos " href="#" />
     <x-sidebar.link title="Proyectos " href="#" />
     <x-sidebar.link title="Avaluos " href="#" />

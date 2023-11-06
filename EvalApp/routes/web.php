@@ -13,6 +13,9 @@ Route::get('/usuarios', function () {
     return view('usuarios');
 })->middleware(['auth', 'verified'])->name('usuarios');
 
+Route::get('/clientes', [App\Http\Controllers\CustomerController::class, 'index'])->name('customer');
+Route::post('/clientes/store', [App\Http\Controllers\CustomerController::class, 'store'])->name('addcustomer');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
