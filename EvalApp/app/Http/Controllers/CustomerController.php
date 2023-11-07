@@ -19,7 +19,7 @@ class CustomerController extends Controller
     {
         $validatedData = $request->validated();
         Customer::create($validatedData);
-        return back()->with('message', 'El cliente se agregó correctamente');
+        return back()->with('message', 'Client was added successfully');
     }
 
     /**
