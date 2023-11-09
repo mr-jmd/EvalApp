@@ -52,6 +52,6 @@
     <x-sidebar.link title="Clientes " href="{{ route('customer') }}" />
     <x-sidebar.link title="Contratos " href="{{ route('contract') }}" />
     <x-sidebar.link title="Proyectos " href="{{ route('projects') }}" />
-    <x-sidebar.link title="Avaluos " href="#" />
+    <x-sidebar.link title="Avaluos " href="{{ route('apparaisal') }}" />
 
 </x-perfect-scrollbar>

@@ -27,6 +27,10 @@ Route::get('/contrato', [App\Http\Controllers\contractController::class, 'index'
 //Proyectos 
 Route::get('/proyectos', [App\Http\Controllers\ProjectsController::class, 'index'])->middleware(['auth', 'verified'])->name('projects');
 
+//Avaluos
+Route::get('/avaluos', [App\Http\Controllers\ApparaisalController::class, 'index'])->middleware(['auth', 'verified'])->name('apparaisal');
+Route::post('/avaluos/store', [App\Http\Controllers\ApparaisalController::class, 'store'])->middleware(['auth', 'verified'])->name('addapparaisal');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
