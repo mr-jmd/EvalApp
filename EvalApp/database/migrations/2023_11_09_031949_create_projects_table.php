@@ -17,10 +17,10 @@ return new class extends Migration
             $table->decimal('Percentage_Completion', 5, 2);
             $table->timestamps();
 
-            $table->bigInteger('Contract_Id')->unsigned();;
+            $table->bigInteger('Contract_Id')->unsigned();
             $table->foreign('Contract_Id')->references('id')->on('contract');
 
-            $table->bigInteger('State_Id')->unsigned();;
+            $table->bigInteger('State_Id')->unsigned();
             $table->foreign('State_Id')->references('id')->on('state');  
         });
     }
