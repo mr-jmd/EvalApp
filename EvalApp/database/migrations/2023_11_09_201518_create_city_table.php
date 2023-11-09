@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reconsiderationtype', function (Blueprint $table) {
+        Schema::create('city', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+
+            $table->bigInteger('id_departament')->unsigned();
+            $table->foreign('id_departament')->references('id')->on('departament');
+
+
         });
     }
 
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reconsiderationtype');
+        Schema::dropIfExists('city');
     }
 };

@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('appraisal', function (Blueprint $table) {
+        Schema::create('apparaisal', function (Blueprint $table) {
             $table->id();
             $table->string('consecutive');
             $table->string('address');
 
             $table->bigInteger('id_project')->unsigned();
-            $table->foreign('id_project')->references('id')->on('project');
+            $table->foreign('id_project')->references('id')->on('projects');
 
             $table->bigInteger('id_contractor')->unsigned();
             $table->foreign('id_contractor')->references('id')->on('contractor');
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('appraisal');
+        Schema::dropIfExists('apparaisal');
     }
 };

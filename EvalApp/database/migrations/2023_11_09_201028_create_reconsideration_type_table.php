@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('propertytype', function (Blueprint $table) {
+        Schema::create('reconsideration_type', function (Blueprint $table) {
             $table->id();
             $table->string('name');
         });
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('propertytype');
+        Schema::dropIfExists('reconsideration_type');
     }
 };

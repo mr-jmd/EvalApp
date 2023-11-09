@@ -19,14 +19,13 @@ return new class extends Migration
             $table->date('responseDate')->nullable();
             
             $table->bigInteger('id_status')->unsigned();
-            $table->foreign('id_status')->references('id')->on('status');
+            $table->foreign('id_status')->references('id')->on('state');
 
             $table->bigInteger('id_reconsiderationType')->unsigned();
-            $table->foreign('id_reconsiderationType')->references('id')->on('reconsiderationType');
+            $table->foreign('id_reconsiderationType')->references('id')->on('reconsideration_type');
             
             $table->bigInteger('id_appraisal')->unsigned();
-            $table->foreign('id_appraisal')->references('id')->on('appraisal');
-
+            $table->foreign('id_appraisal')->references('id')->on('apparaisal');
         });
     }
 

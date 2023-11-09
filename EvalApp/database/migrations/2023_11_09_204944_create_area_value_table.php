@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('areavalue', function (Blueprint $table) {
-            $table->id();
+        Schema::create('area_value', function (Blueprint $table) {
             $table->decimal('value', 10, 2);
             $table->decimal('area', 10, 2);
 
             $table->bigInteger('id_appraisal')->unsigned();
-            $table->foreign('id_appraisal')->references('id')->on('appraisal');
+            $table->foreign('id_appraisal')->references('id')->on('apparaisal');
 
             $table->bigInteger('id_areatype')->unsigned();
-            $table->foreign('id_areatype')->references('id')->on('areatype');
-
+            $table->foreign('id_areatype')->references('id')->on('area_type');
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('areavalue');
+        Schema::dropIfExists('area_value');
     }
 };

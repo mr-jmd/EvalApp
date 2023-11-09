@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('appraisalphase', function (Blueprint $table) {
-            $table->id();
-            
+        Schema::create('appraisal_phase', function (Blueprint $table) {
+            $table->decimal('executionPercentage', 5, 2);
+            $table->date('startDate');
+            $table->date('endDate');
+
             $table->bigInteger('id_phase')->unsigned();
             $table->foreign('id_phase')->references('id')->on('phase');
 
             $table->bigInteger('id_appraisal')->unsigned();
-            $table->foreign('id_appraisal')->references('id')->on('appraisal');
+            $table->foreign('id_appraisal')->references('id')->on('apparaisal');
         });
     }
 
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('appraisalphase');
+        Schema::dropIfExists('appraisal_phase');
     }
 };
