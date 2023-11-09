@@ -21,6 +21,12 @@ Route::post('/clientes/store', [App\Http\Controllers\CustomerController::class, 
 Route::get('/contratistas', [App\Http\Controllers\ContractorController::class, 'index'])->middleware(['auth', 'verified'])->name('contractor');
 Route::post('/contratistas/store', [App\Http\Controllers\ContractorController::class, 'store'])->middleware(['auth', 'verified'])->name('addcontractor');
 
+//Contrato
+Route::get('/contrato', [App\Http\Controllers\contractController::class, 'index'])->middleware(['auth', 'verified'])->name('contract');
+
+//Proyectos 
+Route::get('/proyectos', [App\Http\Controllers\ProjectsController::class, 'index'])->middleware(['auth', 'verified'])->name('projects');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

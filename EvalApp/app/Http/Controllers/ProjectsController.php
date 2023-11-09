@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contract;
+use App\Models\Projects;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreContractRequest;
-use App\Http\Requests\UpdateContractRequest;
+use App\Http\Requests\StoreProjectsRequest;
+use App\Http\Requests\UpdateProjectsRequest;
 
-class contractController extends Controller
+class ProjectsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $contracts = Contract::get();
-        return view('contract', ['contracts' => $contracts]);
+        $projects = Projects::get();
+        return view('projects', ['projects' => $projects]);
     }
 
     /**
@@ -29,7 +29,7 @@ class contractController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreContractRequest $request)
+    public function store(StoreProjectsRequest $request)
     {
         //
     }
@@ -37,7 +37,7 @@ class contractController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Contract $contract)
+    public function show(Projects $projects)
     {
         //
     }
@@ -45,7 +45,7 @@ class contractController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Contract $contract)
+    public function edit(Projects $projects)
     {
         //
     }
@@ -53,7 +53,7 @@ class contractController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateContractRequest $request, Contract $contract)
+    public function update(UpdateProjectsRequest $request, Projects $projects)
     {
         //
     }
@@ -61,7 +61,7 @@ class contractController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Contract $contract)
+    public function destroy(Projects $projects)
     {
         //
     }
