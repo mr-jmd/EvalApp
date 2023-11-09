@@ -13,7 +13,24 @@ return new class extends Migration
     {
         Schema::create('contract', function (Blueprint $table) {
             $table->id();
+            $table->string('Contract_Number');
+            $table->string('Proposal_Number');
+            $table->date('Approval_Date');
+            $table->date('Delivery_Date');
+            $table->integer('Days_Due');
+            $table->text('Scope');
+            $table->decimal('Contract_Value', 10, 2);
+            $table->string('Document_URL');
             $table->timestamps();
+
+            $table->bigInteger('Business_Line_Id')->unsigned();;
+            $table->foreign('Business_Line_Id')->references('id')->on('business_line');
+
+            $table->bigInteger('Customer_Id')->unsigned();;
+            $table->foreign('Customer_Id')->references('id')->on('customers');
+
+            $table->bigInteger('State_Id')->unsigned();;
+            $table->foreign('State_Id')->references('id')->on('state');            
         });
     }
 

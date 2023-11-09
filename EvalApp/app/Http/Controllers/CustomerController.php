@@ -11,15 +11,15 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        $customers = Customer::get();
-        return view('customers', ['Customers' => $customers]);
+        $customer = Customer::get();
+        return view('customers', ['Customers' => $customer]);
     }
 
     public function store(StoreCustomerRequest $request)
     {
         $validatedData = $request->validated();
         Customer::create($validatedData);
-        return back()->with('message', 'Client was added successfully');
+        return back()->with('message', 'Cliente Creado Con Exito');
     }
 
     /**

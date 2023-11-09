@@ -17,6 +17,10 @@ Route::get('/usuarios', function () {
 Route::get('/clientes', [App\Http\Controllers\CustomerController::class, 'index'])->middleware(['auth', 'verified'])->name('customer');
 Route::post('/clientes/store', [App\Http\Controllers\CustomerController::class, 'store'])->middleware(['auth', 'verified'])->name('addcustomer');
 
+//Contratistas 
+Route::get('/contratistas', [App\Http\Controllers\ContractorController::class, 'index'])->middleware(['auth', 'verified'])->name('contractor');
+Route::post('/contratistas/store', [App\Http\Controllers\ContractorController::class, 'store'])->middleware(['auth', 'verified'])->name('addcontractor');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
