@@ -31,7 +31,9 @@ class ProjectsController extends Controller
      */
     public function store(StoreProjectsRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+        Projects::create($validatedData);
+        return back()->with('message', 'Proyecto creado con éxito');
     }
 
     /**

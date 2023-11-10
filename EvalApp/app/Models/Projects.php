@@ -14,6 +14,8 @@ class Projects extends Model
     protected $fillable = [
         'Name',
         'Percentage_Completion',
+        'created_at',
+        'updated_at',
         'Contract_Id',
         'State_Id',
     ];

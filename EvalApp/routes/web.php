@@ -26,6 +26,7 @@ Route::get('/contrato', [App\Http\Controllers\contractController::class, 'index'
 
 //Proyectos 
 Route::get('/proyectos', [App\Http\Controllers\ProjectsController::class, 'index'])->middleware(['auth', 'verified'])->name('projects');
+Route::post('/proyectos/store', [App\Http\Controllers\ProjectsController::class, 'store'])->middleware(['auth', 'verified'])->name('addproject');
 
 //Avaluos
 Route::get('/avaluos', [App\Http\Controllers\ApparaisalController::class, 'index'])->middleware(['auth', 'verified'])->name('apparaisal');
