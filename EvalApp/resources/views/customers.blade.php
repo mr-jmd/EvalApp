@@ -34,6 +34,7 @@
                     <th>Nombre</th>
                     <th>Telefono</th>
                     <th>Correo</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,6 +44,10 @@
                     <td>{{ $Customer -> name }}</td>
                     <td>{{ $Customer -> phone }}</td>
                     <td>{{ $Customer -> email }}</td>
+                    <td style="text-align: center;">
+                        <a href="#" class="edit" data-toggle="modal" data-id=""><i class="material-icons" title="Edit">&#xE254;</i></a>
+                        <a href="#" class="delete" data-toggle="modal" data-id=""><i class="material-icons" title="Delete">&#xE872;</i></a>
+                    </td>
                 </tr>
                 @endforeach               
             </tbody>

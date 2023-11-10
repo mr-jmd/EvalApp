@@ -18,7 +18,7 @@
                     <h2><b>Contratos</b></h2>
                 </div>
                 <div class="col-sm-6">
-                    <a href="#addCustomerModal" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i>Agregar Contratista</a>
+                    <a href="#addCustomerModal" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i>Agregar Contrato</a>
                     <div class="search-box">
                         <i class="material-icons">&#xE8B6;</i>
                         <input id="search-input" type="text" class="form-control" placeholder="Search&hellip;">

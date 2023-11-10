@@ -30,7 +30,7 @@ class ApparaisalController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreApparaisalRequest $request)
+    public function store(StoreAppraisalRequest $request)
     {
         $validatedData = $request->validated();
         Apparaisal::create($validatedData);
@@ -56,7 +56,7 @@ class ApparaisalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateApparaisalRequest $request, Apparaisal $apparaisal)
+    public function update(UpdateAppraisalRequest $request, Apparaisal $apparaisal)
     {
         //
     }
