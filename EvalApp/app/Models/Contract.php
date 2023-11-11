@@ -20,6 +20,8 @@ class Contract extends Model
         'Scope',
         'Contract_Value',
         'Document_URL',
+        'created_at',
+        'updated_at',
         'Business_Line_Id',
         'Customer_Id',
         'State_Id',

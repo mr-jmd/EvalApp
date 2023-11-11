@@ -23,6 +23,7 @@ Route::post('/contratistas/store', [App\Http\Controllers\ContractorController::c
 
 //Contrato
 Route::get('/contrato', [App\Http\Controllers\contractController::class, 'index'])->middleware(['auth', 'verified'])->name('contract');
+Route::post('/contrato/store', [App\Http\Controllers\contractController::class, 'store'])->middleware(['auth', 'verified'])->name('addcontract');
 
 //Proyectos 
 Route::get('/proyectos', [App\Http\Controllers\ProjectsController::class, 'index'])->middleware(['auth', 'verified'])->name('projects');
@@ -31,6 +32,11 @@ Route::post('/proyectos/store', [App\Http\Controllers\ProjectsController::class,
 //Avaluos
 Route::get('/avaluos', [App\Http\Controllers\ApparaisalController::class, 'index'])->middleware(['auth', 'verified'])->name('apparaisal');
 Route::post('/avaluos/store', [App\Http\Controllers\ApparaisalController::class, 'store'])->middleware(['auth', 'verified'])->name('addapparaisal');
+
+//Reconsideraciones
+Route::get('/reconsideraciones', [App\Http\Controllers\ReconsiderationsController::class, 'index'])->middleware(['auth', 'verified'])->name('reconsiderations');
+Route::post('/reconsideraciones/store', [App\Http\Controllers\ReconsiderationsController::class, 'store'])->middleware(['auth', 'verified'])->name('addreconsiderations');
+Route::delete('/reconsideraciones/{reconsideration}', [App\Http\Controllers\ReconsiderationsController::class, 'destroy'])->middleware(['auth', 'verified'])->name('deleteReconsideration');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -22,10 +22,10 @@ class StoreContractorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => ['required', 'unique:customers'],
+            'id' => ['required', 'unique:contractor'],
             'name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:20'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:customers'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:contractor'],
         ];
     }
 

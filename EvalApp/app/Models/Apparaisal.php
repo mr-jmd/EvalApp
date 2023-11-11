@@ -11,8 +11,7 @@ class Apparaisal extends Model
 
     protected $table = 'apparaisal';
 
-    protected $filatable = [
-     'id',
+    protected $fillable  = [
      'consecutive',
      'address',
      'id_project',
@@ -20,6 +19,5 @@ class Apparaisal extends Model
      'id_city',
      'created_at',
      'updated_at',
-
     ];
 }

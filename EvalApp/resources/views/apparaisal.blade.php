@@ -18,7 +18,7 @@
                     <h2><b>Avalúos</b></h2>
                 </div>
                 <div class="col-sm-6">
-                    <a href="#addCustomerModal" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i>Agregar Avalúo</a>
+                    <a href="#addApparaisalModal" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i>Agregar Avalúo</a>
                     <div class="search-box">
                         <i class="material-icons">&#xE8B6;</i>
                         <input id="search-input" type="text" class="form-control" placeholder="Search&hellip;">
@@ -54,6 +54,76 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
+
+    <div id="addApparaisalModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ route('addapparaisal') }}" method="POST">
+                    @csrf
+                    <div class="modal-header">
+                        <h4 class="modal-title">Nuevo Avalúo</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Consecutivo</label>
+                            <input type="text" class="form-control" id="consecutive" name="consecutive" value="{{old('consecutive')}}">
+                            @if ($errors->has('consecutive'))
+                            <p class="text-danger">{{ $errors->first('consecutive') }}</p>
+                            <script>
+                                $('#addApparaisalModal').modal('show');
+                            </script>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label>Dirección</label>
+                            <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}">
+                            @if ($errors->has('address'))
+                            <p class="text-danger">{{ $errors->first('address') }}</p>
+                            <script>
+                                $('#addApparaisalModal').modal('show');
+                            </script>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label>ID Proyecto</label>
+                            <input type="text" class="form-control" id="id_project" name="id_project" value="{{old('id_project')}}">
+                            @if ($errors->has('id_project'))
+                            <p class="text-danger">{{ $errors->first('id_project') }}</p>
+                            <script>
+                                $('#addApparaisalModal').modal('show');
+                            </script>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label>ID Contratista</label>
+                            <input type="text" class="form-control" id="id_contractor" name="id_contractor" value="{{old('id_contractor')}}">
+                            @if ($errors->has('id_contractor'))
+                            <p class="text-danger">{{ $errors->first('id_contractor') }}</p>
+                            <script>
+                                $('#addApparaisalModal').modal('show');
+                            </script>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label>ID Ciudad</label>
+                            <input type="text" class="form-control" id="id_city" name="id_city" value="{{old('id_city')}}">
+                            @if ($errors->has('id_city'))
+                            <p class="text-danger">{{ $errors->first('id_city') }}</p>
+                            <script>
+                                $('#addApparaisalModal').modal('show');
+                            </script>
+                            @endif
+                        </div>                       
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Agregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
 </x-app-layout>

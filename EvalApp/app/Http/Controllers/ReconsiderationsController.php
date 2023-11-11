@@ -13,7 +13,8 @@ class ReconsiderationsController extends Controller
      */
     public function index()
     {
-        //
+        $reconsiderations = Reconsiderations::get();
+        return view('reconsiderations', ['reconsiderations' => $reconsiderations]);
     }
 
     /**
@@ -29,7 +30,9 @@ class ReconsiderationsController extends Controller
      */
     public function store(StoreReconsiderationsRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+        Reconsiderations::create($validatedData);
+        return back()->with('message', 'Reconsideración creado con éxito');
     }
 
     /**
@@ -61,6 +64,13 @@ class ReconsiderationsController extends Controller
      */
     public function destroy(Reconsiderations $reconsiderations)
     {
-        //
+        // Verifica si la reconsideración existe
+          if (!$reconsideration) {
+        return back()->with('error', 'La reconsideración no fue encontrada');
+    }
+
+     $reconsideration->delete();
+     return back()->with('message', 'Reconsideración eliminada con éxito');
+
     }
 }

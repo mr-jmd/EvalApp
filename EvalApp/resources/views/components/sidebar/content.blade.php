@@ -27,6 +27,7 @@
     <x-sidebar.link title="Contratos " href="{{ route('contract') }}" />
     <x-sidebar.link title="Proyectos " href="{{ route('projects') }}" />
     <x-sidebar.link title="Avaluos " href="{{ route('apparaisal') }}" />
+    <x-sidebar.link title="Reconsideraciones " href="{{ route('reconsiderations') }}" />
 
     <x-sidebar.dropdown
         title="Administrar"

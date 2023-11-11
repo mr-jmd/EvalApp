@@ -31,7 +31,9 @@ class contractController extends Controller
      */
     public function store(StoreContractRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+        Contract::create($validatedData);
+        return back()->with('message', 'Contrato creado con éxito');
     }
 
     /**
