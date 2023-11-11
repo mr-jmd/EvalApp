@@ -2,6 +2,14 @@
 
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <script>
+            $(document).ready(function() {
+                $(document).on('click', '.delete', function() {
+                    var id = $(this).data("id");    
+                    $('#did').val(id);
+                });
+            });
+        </script>
     </head>
     <x-slot name="header">  </x-slot>
      
@@ -43,7 +51,7 @@
             <tbody>
                 @foreach($reconsiderations as $reconsideration)
                 <tr class="selectable-row" data-url="#">
-                    <td>{{ $reconsideration -> id }}</td>
+                    <td><span id="id<?php echo $reconsideration->id ?>">{{ $reconsideration -> id }}</span></td>
                     <td>{{ $reconsideration -> name }}</td>
                     <td>{{ $reconsideration -> receptionDate }}</td>
                     <td>{{ $reconsideration -> responseDate }}</td>
@@ -52,7 +60,7 @@
                     <td>{{ $reconsideration -> id_appraisal }}</td>
                     <td style="text-align: center;">
                         <a href="#" class="edit" data-toggle="modal" data-id=""><i class="material-icons" title="Edit">&#xE254;</i></a>
-                        <a href="#" class="delete" data-toggle="modal" data-id="{{ $reconsideration->id }}"><i class="material-icons" title="Delete">&#xE872;</i></a>
+                        <a href="#deleteReconsiderations" class="delete" data-toggle="modal" data-id="<?php echo $reconsideration->id ?>"><i class="material-icons" title="Delete">&#xE872;</i></a>
 
                     </td>
                 </tr>
@@ -60,46 +68,6 @@
             </tbody>
         </table>
     </div>
-
-    <!-- Para eliminar reconsideración-->
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-    $(document).ready(function () {
-        $('.delete').on('click', function () {
-            var reconsiderationId = $(this).data('id');
-
-            // Abre el modal de confirmación
-            $('#confirmationModal').modal('show');
-
-            // Actualiza el atributo 'href' del botón de confirmación del modal
-            $('#confirmDelete').attr('href', '/reconsideraciones/' + reconsiderationId);
-        });
-    });
-</script>
-
-<!-- Agrega un modal de confirmación al final de tu vista -->
-<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirmar eliminación</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ¿Estás seguro de que quieres eliminar esta reconsideración?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <a id="confirmDelete" class="btn btn-danger">Eliminar</a>
-            </div>
-        </div>
-    </div>
-</div>
 
     <div id="addReconsiderationsModal" class="modal fade">
         <div class="modal-dialog">
@@ -176,6 +144,30 @@
                         <button type="submit" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-success">Agregar</button>
                         
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="deleteReconsiderations" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ route('deleteReconsiderations') }}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <div class="modal-header">
+                        <h4 class="modal-title">Borrar Reconsideración</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Está seguro de que desea eliminar esta Reconsideración?</p>
+                        <p class="text-warning"><small>Esta acción no se puede deshacer.</small></p>
+                        <input type="hidden" class="form-control" id="did" name="id" value="{{old('id')}}" require>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-danger" value="Delete">
                     </div>
                 </form>
             </div>

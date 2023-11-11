@@ -36,7 +36,7 @@ Route::post('/avaluos/store', [App\Http\Controllers\ApparaisalController::class,
 //Reconsideraciones
 Route::get('/reconsideraciones', [App\Http\Controllers\ReconsiderationsController::class, 'index'])->middleware(['auth', 'verified'])->name('reconsiderations');
 Route::post('/reconsideraciones/store', [App\Http\Controllers\ReconsiderationsController::class, 'store'])->middleware(['auth', 'verified'])->name('addreconsiderations');
-Route::delete('/reconsideraciones/{reconsideration}', [App\Http\Controllers\ReconsiderationsController::class, 'destroy'])->middleware(['auth', 'verified'])->name('deleteReconsideration');
+Route::delete('/reconsideraciones/destroy', [App\Http\Controllers\ReconsiderationsController::class, 'destroy'])->middleware(['auth', 'verified'])->name('deleteReconsiderations');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

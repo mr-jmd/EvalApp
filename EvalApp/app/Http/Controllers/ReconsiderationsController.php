@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reconsiderations;
 use App\Http\Requests\StoreReconsiderationsRequest;
 use App\Http\Requests\UpdateReconsiderationsRequest;
+use Illuminate\Http\Request;
 
 class ReconsiderationsController extends Controller
 {
@@ -62,15 +63,9 @@ class ReconsiderationsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Reconsiderations $reconsiderations)
+    public function destroy(Request $request)
     {
-        // Verifica si la reconsideración existe
-          if (!$reconsideration) {
-        return back()->with('error', 'La reconsideración no fue encontrada');
-    }
-
-     $reconsideration->delete();
-     return back()->with('message', 'Reconsideración eliminada con éxito');
-
+        Reconsiderations::where('id',$request->id)->delete();
+        return back()->with('message', 'Reconsideración eliminada con éxito');
     }
 }
