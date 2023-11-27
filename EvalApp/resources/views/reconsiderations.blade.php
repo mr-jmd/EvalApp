@@ -51,7 +51,7 @@
             <tbody>
                 @foreach($reconsiderations as $reconsideration)
                 <tr class="selectable-row" data-url="#">
-                    <td><span id="id<?php echo $reconsideration->id ?>">{{ $reconsideration -> id }}</span></td>
+                    <td>{{ $reconsideration -> id }}</td>
                     <td>{{ $reconsideration -> name }}</td>
                     <td>{{ $reconsideration -> receptionDate }}</td>
                     <td>{{ $reconsideration -> responseDate }}</td>

@@ -12,6 +12,7 @@ class Contractor extends Model
     protected $table = 'contractor';
     
     protected $fillable = [
+        'id',
         'name',
         'phone', 
         'email', 

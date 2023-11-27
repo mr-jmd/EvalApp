@@ -6,6 +6,8 @@ use App\Models\Contractor;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreContractorRequest;
 use App\Http\Requests\UpdateContractorRequest;
+use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ContractorController extends Controller
 {
@@ -55,16 +57,37 @@ class ContractorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateContractorRequest $request, Contractor $contractor)
+    public function update(UpdateContractorRequest $request)
     {
-        //
+        $request->validated();
+
+        try {
+            $contractor = Contractor::where('id',$request->id)->first();
+            $contractor->name = $request->name;
+            $contractor->phone = $request->phone;
+            $contractor->email = $request->email;
+            $contractor->save();
+
+            return back()->with('message', 'Contratista actualizado con éxito');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Se produjo un error al actualizar el contratista');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Contractor $contractor)
+    public function destroy(Request $request)
     {
-        //
+        try {
+            $contractor = Contractor::findOrFail($request->id);
+            $contractor->delete();
+    
+            return back()->with('message', 'Contratista eliminado con éxito');
+        } catch (ModelNotFoundException $e) {
+            return back()->with('error', 'No se encontró al contratista');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Se produjo un error al eliminar al contratista');
+        }
     }
 }

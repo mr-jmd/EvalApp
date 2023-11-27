@@ -20,6 +20,8 @@ Route::post('/clientes/store', [App\Http\Controllers\CustomerController::class, 
 //Contratistas 
 Route::get('/contratistas', [App\Http\Controllers\ContractorController::class, 'index'])->middleware(['auth', 'verified'])->name('contractor');
 Route::post('/contratistas/store', [App\Http\Controllers\ContractorController::class, 'store'])->middleware(['auth', 'verified'])->name('addcontractor');
+Route::delete('/contratistas/destroy', [App\Http\Controllers\ContractorController::class, 'destroy'])->middleware(['auth', 'verified'])->name('deleteContractors');
+Route::put('/contratistas/update', [App\Http\Controllers\ContractorController::class, 'update'])->name('updateContractors');
 
 //Contrato
 Route::get('/contrato', [App\Http\Controllers\contractController::class, 'index'])->middleware(['auth', 'verified'])->name('contract');
